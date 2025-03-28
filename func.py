@@ -1,5 +1,5 @@
 import sre_parse
-import sre_compile
+#import sre_compile
 import random
 import string
 import re

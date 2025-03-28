@@ -3,9 +3,9 @@ reverse string from regexp, support try to embed a sequence inside generated str
 
 if don't need embed sequence just set position and current_position_idx to None
 
-"""
 # Example Usage:
 
+```
 pattern_string = r"[qwrtpsdfghjklzxcvbnm]*\w*(\d{2,})\W*\S{,5}\s?\w+"
 
 parsed_pattern = sre_parse.parse(pattern_string)
@@ -17,4 +17,4 @@ for p in range(100, 110):
 
     print(f"Generated string: {generated_string}")
     print(f"Is valid: {is_valid}")
-"""
+```

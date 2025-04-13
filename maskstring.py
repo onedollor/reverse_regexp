@@ -2,13 +2,28 @@ import random
 from string import ascii_lowercase, ascii_uppercase, digits
 
 
-def _build_random_mapping(chars):
-    """Create a random bijective mapping for given characters"""
-    shuffled = random.sample(chars, len(chars))
-    return dict(zip(chars, shuffled))
-
-
 class StringMapper:
+    @staticmethod
+    def _build_random_mapping(chars, th=0.9):
+        max_retry = 100
+        curr = 0
+        """Create a random bijective mapping for given characters"""
+        while curr < max_retry:
+            shuffled = random.sample(chars, len(chars))
+            if StringMapper.validate_shuffle(chars, shuffled, th=th):
+                return dict(zip(chars, shuffled))
+            else:
+                curr += 1
+        raise Exception(f"can't generate random mapping,un-shuffled over th[{th}].")
+
+    @staticmethod
+    def validate_shuffle(chars, shuffled, th=0.9):
+        d = 0
+        for i, char in enumerate(chars):
+            if shuffled[i] == char:
+                d += 1
+        return d / len(chars) > (1 - th)
+
     def __init__(self, skip_chars=None, seed=None):
         """
         Initializes the Mappings object with random bijective mappings for lowercase,
@@ -33,9 +48,9 @@ class StringMapper:
         self._AZ_len = len(self._ascii_uppercase)
         self._oz_len = len(self._digits)
 
-        self.az_mappings = [_build_random_mapping(self._ascii_lowercase) for _ in range(len(self._ascii_lowercase))]
-        self.AZ_mappings = [_build_random_mapping(self._ascii_uppercase) for _ in range(len(self._ascii_lowercase))]
-        self.oz_mappings = [_build_random_mapping(self._digits) for _ in range(len(self._digits))]
+        self.az_mappings = [StringMapper._build_random_mapping(self._ascii_lowercase) for _ in range(len(self._ascii_lowercase))]
+        self.AZ_mappings = [StringMapper._build_random_mapping(self._ascii_uppercase) for _ in range(len(self._ascii_lowercase))]
+        self.oz_mappings = [StringMapper._build_random_mapping(self._digits) for _ in range(len(self._digits))]
 
     def map_string(self, s):
         if not s:

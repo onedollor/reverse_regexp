@@ -37,15 +37,15 @@ for i in range(0,len(letters)):
 
 print(f"{len(r)} {c}")
 
-for i in range(0,len(letters)):
-    for j in range(0,len(letters)):
-        for k in range(0, len(letters)):
-            for l in range(0, len(letters)):
-                s = mapper.map_string(f"{letters[i]}{letters[j]}{letters[k]}{letters[l]}")
-                # if s in r:
-                #     print(f"{letters[i]}{letters[j]}{letters[k]}{letters[l]} => s[{s}]")
-                # else:
-                r.add(s)
-                c+=1
-
-print(f"{len(r)} {c}")
+# for i in range(0,len(letters)):
+#     for j in range(0,len(letters)):
+#         for k in range(0, len(letters)):
+#             for l in range(0, len(letters)):
+#                 s = mapper.map_string(f"{letters[i]}{letters[j]}{letters[k]}{letters[l]}")
+#                 # if s in r:
+#                 #     print(f"{letters[i]}{letters[j]}{letters[k]}{letters[l]} => s[{s}]")
+#                 # else:
+#                 r.add(s)
+#                 c+=1
+#
+# print(f"{len(r)} {c}")

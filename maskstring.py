@@ -9,7 +9,6 @@ class StringMapper:
         curr = 0
 
         if len(chars) == 0 or len(chars) == 1:
-            print(dict(zip(chars, chars)))
             return dict(zip(chars, chars))
 
         _th = th if (1 - 1/len(chars)) > th else (1 - 1/(len(chars) - 1) - 0.1)

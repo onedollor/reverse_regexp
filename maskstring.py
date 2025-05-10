@@ -1,5 +1,5 @@
 import random
-from string import ascii_lowercase, ascii_uppercase, digits
+import string
 
 
 class StringMapper:
@@ -53,9 +53,9 @@ class StringMapper:
         self.static_words = set([word.lower().strip() for word in static_words if word is not None]) if static_words else set()
         self.min_mask_len = min_mask_len
 
-        self._ascii_lowercase = [c for c in ascii_lowercase if c not in skip_chars]
-        self._ascii_uppercase = [c for c in ascii_uppercase if c not in skip_chars]
-        self._digits = [c for c in digits if c not in skip_chars]
+        self._ascii_lowercase = [c for c in string.ascii_lowercase if c not in skip_chars]
+        self._ascii_uppercase = [c for c in string.ascii_uppercase if c not in skip_chars]
+        self._digits = [c for c in string.digits if c not in skip_chars]
 
         self._az_len = len(self._ascii_lowercase)
         self._AZ_len = len(self._ascii_uppercase)
